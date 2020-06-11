@@ -1,0 +1,6 @@
+framework module StpOCSDK_XueErSi {
+  umbrella header "StpOCSDK-XueErSi-umbrella.h"
+
+  export *
+  module * { export * }
+}
