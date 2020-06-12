@@ -31,7 +31,7 @@
     [self.view addSubview:self.tableView];
     STPAccessConfiger.developEnv = Env_Development;//开发环境
 //    STPAccessConfiger.developEnv = Env_Distribution;//生产环境
-    [STPAccessConfiger setPackageId:@"stp.sdk" ];
+    [STPAccessConfiger setPackageId:@"wx.sdk" ];
     
     [STPAuthApi login:@"13552966915" passWord:@"111111" pushId:@"" completionBlock:^(STPUserModel * _Nonnull user, NSError * _Nonnull error) {
         NSString *tips = @"登录成功";
@@ -77,11 +77,11 @@
         @"删除绘本",
         @"获取设备端绘本列表",
         @"获取设备端存储卡容量信息",
-        @"获取学习成就 （按照日期进行选择）",
-        @"获取学习成就 （按照数量进行选择）",
-        @"获取学习成就详情 （按照数量进行选择）",
-        @"获取跟读评测统计 （按照日期进行选择）",
-        @"获取跟读评测统计 （按照数量进行选择）"
+        @"获取点读数据 （按照日期进行选择）",
+        @"获取点读数据 （按照数量进行选择）",
+        @"获取点读、跟读、读书详情（按照数量进行选择）",
+        @"获取跟读数据 （按照日期进行选择）",
+        @"获取跟读数据 （按照数量进行选择）"
     ];
 }
 
@@ -268,11 +268,13 @@
             }];
         }
             break;
+            
+                 
         case 12:
         {
             
-            [STPStudyReportApi getStudyAchieveData:@"point-reading" startDate:@"2020-03-24" endDate:@"2020-03-31" block:^(STPStudyAchieveList * _Nullable list, NSError * _Nullable error) {
-                NSLog(@"获取学习成就 （按照日期进行选择）:%@",error);
+            [STPStudyReportApi getStudyAchieveData:@"point-reading" startDate:@"2020-05-24" endDate:@"2020-06-10" block:^(STPStudyAchieveList * _Nullable list, NSError * _Nullable error) {
+                NSLog(@"获取点读数据 （按照日期进行选择）:%@",error);
                 if (error) {
                     message = error.description;
                 } else {
@@ -285,7 +287,7 @@
         case 13:
         {
             [STPStudyReportApi getStudyAchieveData:@"point-reading" fromId:0 count:7 block:^(STPStudyAchieveList * _Nullable list, NSError * _Nullable error) {
-                NSLog(@"获取学习成就 （按照数量进行选择）:%@",error);
+                NSLog(@"获取点读数据 （按照数量进行选择）:%@",error);
                 if (error) {
                     message = error.description;
                 } else {
@@ -299,7 +301,7 @@
         {
             
             [STPStudyReportApi getStudyAchieveDetailData:@"duration" fromId:0 count:7 block:^(STPStudyAchieveDetail * _Nullable list, NSError * _Nullable error) {
-                NSLog(@"获取学习成就详情 （按照数量进行选择）:%@",error);
+                NSLog(@"获取点读、跟读、读书详情（按照数量进行选择）:%@",error);
                 
                 if (error) {
                     message = error.description;
@@ -312,8 +314,8 @@
             break;
         case 15:
         {
-            [STPStudyReportApi getFollowReadData:@"2020-03-24" endDate:@"2020-03-31" block:^(NSArray * _Nullable list, NSError * _Nullable error) {
-                NSLog(@"获取跟读评测统计 （按照日期进行选择）:%@",error);
+            [STPStudyReportApi getFollowReadData:@"2020-04-24" endDate:@"2020-6-30" block:^(NSArray * _Nullable list, NSError * _Nullable error) {
+                NSLog(@"获取跟读数据 （按照日期进行选择）:%@",error);
                 if (error) {
                     message = error.description;
                 } else {
@@ -327,7 +329,7 @@
         {
             
             [STPStudyReportApi getFollowReadData:0 count:7 block:^(NSArray * _Nullable list, NSError * _Nullable error) {
-                NSLog(@"获取跟读评测统计 （按照数量进行选择）:%@",error);
+                NSLog(@"获取跟读数据 （按照数量进行选择）:%@",error);
                 if (error) {
                     message = error.description;
                 } else {
