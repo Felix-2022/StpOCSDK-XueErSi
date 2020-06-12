@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'StpOCSDK-XueErSi'
-  s.version          = '0.1.1'
+  s.version          = '0.1.2'
   s.summary          = 'A short description of StpOCSDK-XueErSi.'
 
 # This description is used to generate tags and improve search results.
@@ -32,7 +32,7 @@ TODO: Add long description of the pod here.
 #  s.libraries = 'c++'
   #s.frameworks = 'UIKit','WebKit','CoreTelephony','SystemConfiguration','MobileCoreServices','AVFoundation'
   s.dependency 'AFNetworking','~> 3.2.0'
-  s.dependency 'YYKit'
+ 
   s.vendored_frameworks = 'SpeakPen.framework'
   s.xcconfig = { 'OTHER_LDFLAGS' => '-ObjC'}
 

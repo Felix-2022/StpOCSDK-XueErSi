@@ -205,7 +205,7 @@
             break;
         case 7:
         {
-            [STPPictureBookApi getPicbookDetail:@"3562496" block:^(STPPicBookDetailModel * _Nullable detailModel, NSError * _Nullable error) {
+            [STPPictureBookApi getPicbookDetail:@"YWlyZXM6MjU3Njc3MQ" block:^(STPPicBookDetailModel * _Nullable detailModel, NSError * _Nullable error) {
                 NSLog(@"获取绘本详情:%@",error);
                 if (error) {
                     message = error.description;
