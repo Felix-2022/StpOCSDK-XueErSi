@@ -33,32 +33,32 @@
 //    STPAccessConfiger.developEnv = Env_Distribution;//生产环境
     [STPAccessConfiger setPackageId:@"wx.sdk" ];
     
-    [STPAuthApi login:@"13552966915" passWord:@"111111" pushId:@"" completionBlock:^(STPUserModel * _Nonnull user, NSError * _Nonnull error) {
-        NSString *tips = @"登录成功";
-        NSString *message = @"点击下面列表测试";
-        if (error) {
-            tips = @"登录失败";
-            message = error.description;
-        } else {
-            if (user.devices.count > 0) {
-                NSString* deviceId =[[user.devices firstObject] deviceID];
-                NSString* appId =[[user.devices firstObject] appId] ;
-                NSLog(@"deviceId:%@,appId:%@",deviceId,appId);
-                
-                [STPAccessConfiger setCurrDeviceID:deviceId appId:appId   ];
-            }
-        }
-        self.alertVc = [UIAlertController alertControllerWithTitle:tips message:message preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *sureBtn = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull   action) {
-            NSLog(@"确定");
-        }];
-        [sureBtn setValue:[UIColor redColor] forKey:@"titleTextColor"];
-        //将action添加到控制器
-        [self.alertVc addAction :sureBtn];
-        //展示
-        [self presentViewController:self.alertVc animated:YES completion:nil];
-        
-    }];
+//    [STPAuthApi login:@"13552966915" passWord:@"111111" pushId:@"" completionBlock:^(STPUserModel * _Nonnull user, NSError * _Nonnull error) {
+//        NSString *tips = @"登录成功";
+//        NSString *message = @"点击下面列表测试";
+//        if (error) {
+//            tips = @"登录失败";
+//            message = error.description;
+//        } else {
+//            if (user.devices.count > 0) {
+//                NSString* deviceId =[[user.devices firstObject] deviceID];
+//                NSString* appId =[[user.devices firstObject] appId] ;
+//                NSLog(@"deviceId:%@,appId:%@",deviceId,appId);
+//                
+//                [STPAccessConfiger setCurrDeviceID:deviceId appId:appId   ];
+//            }
+//        }
+//        self.alertVc = [UIAlertController alertControllerWithTitle:tips message:message preferredStyle:UIAlertControllerStyleAlert];
+//        UIAlertAction *sureBtn = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull   action) {
+//            NSLog(@"确定");
+//        }];
+//        [sureBtn setValue:[UIColor redColor] forKey:@"titleTextColor"];
+//        //将action添加到控制器
+//        [self.alertVc addAction :sureBtn];
+//        //展示
+//        [self presentViewController:self.alertVc animated:YES completion:nil];
+//        
+//    }];
     // Do any additional setup after loading the view.
 }
 
@@ -81,7 +81,8 @@
         @"获取点读数据 （按照数量进行选择）",
         @"获取点读、跟读、读书详情（按照数量进行选择）",
         @"获取跟读数据 （按照日期进行选择）",
-        @"获取跟读数据 （按照数量进行选择）"
+        @"获取跟读数据 （按照数量进行选择）",
+        @"第三方登录"
     ];
 }
 
@@ -337,6 +338,35 @@
                 }
                 [self showMessage:message];
             }];
+        }
+        case 17:
+        {
+            [STPAuthApi loginEx:@"56998" passwd:@"93fa6aaf082248530c00847d9ecf443e" thirdCode:@"t6ahF4MDpAx4PTG_bbhdSb18ffHeg_GlIT7wVVc9q4WAWEN_Lzv9jZREx2SLypxNJMm9fSpOITdxaO8a6cKoxcOT5OxGVK8lV6yqop5Olyk6vYzIdVoQTG0m2NPjIs33pc01YXvMvIyoMEibW4UXZ2SDXafXdd222JUMnqk_LwE" block:^(STPUserModel * _Nonnull user, NSError * _Nonnull error) {
+                   NSString *tips = @"登录成功";
+                   NSString *message = @"点击下面列表测试";
+                   if (error) {
+                       tips = @"登录失败";
+                       message = error.description;
+                   } else {
+                       if (user.devices.count > 0) {
+                           NSString* deviceId =[[user.devices firstObject] deviceID];
+                           NSString* appId =[[user.devices firstObject] appId] ;
+                           NSLog(@"deviceId:%@,appId:%@",deviceId,appId);
+                           
+                           [STPAccessConfiger setCurrDeviceID:deviceId appId:appId   ];
+                       }
+                   }
+                   self.alertVc = [UIAlertController alertControllerWithTitle:tips message:message preferredStyle:UIAlertControllerStyleAlert];
+                   UIAlertAction *sureBtn = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull   action) {
+                       NSLog(@"确定");
+                   }];
+                   [sureBtn setValue:[UIColor redColor] forKey:@"titleTextColor"];
+                   //将action添加到控制器
+                   [self.alertVc addAction :sureBtn];
+                   //展示
+                   [self presentViewController:self.alertVc animated:YES completion:nil];
+                   
+               }];
         }
             break;
         default:
