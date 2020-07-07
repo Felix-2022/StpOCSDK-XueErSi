@@ -356,6 +356,7 @@
                            [STPAccessConfiger setCurrDeviceID:deviceId appId:appId   ];
                        }
                    }
+                NSLog(@"name:%@",user.name);
                    self.alertVc = [UIAlertController alertControllerWithTitle:tips message:message preferredStyle:UIAlertControllerStyleAlert];
                    UIAlertAction *sureBtn = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull   action) {
                        NSLog(@"确定");
