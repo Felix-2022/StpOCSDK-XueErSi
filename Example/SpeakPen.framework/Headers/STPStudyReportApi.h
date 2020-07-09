@@ -48,8 +48,23 @@ NS_ASSUME_NONNULL_BEGIN
 + (void )getStudyAchieveDetailData:(NSString *)type
                       fromId:(NSInteger)fromId
                        count:(NSInteger)count
-                       block:(nullable void (^)(STPStudyAchieveDetail * _Nullable list,NSError * _Nullable error))block;
-//
+                       block:(nullable void (^)(NSArray<STPStudyAchieveDetail*> * _Nullable list,NSError * _Nullable error))block;
+
+
+/// 获取学习成就详情数据 （按照数量进行选择）
+/// @param type候选值对应的字符串
+/// 0 ：整体概况 ("")
+/// 1: 点读数量(point-reading)
+/// 2：绘本阅读量 (pic-book)
+/// 3：学习时长(duration)
+/// 4：跟读次数 (follow-reading)
+/// @param startDate 起始日期
+/// @param endDate 终止日期
++ (void )getStudyAchieveDetailData:(NSString *)type
+                       startDate:(NSString *)startDate
+                       endDate:(NSString *)endDate
+                       block:(nullable void (^)(NSArray<STPStudyAchieveDetail*> * _Nullable list,NSError * _Nullable error))block;
+
 
 /// 获取跟读评测统计数据 （按照日期进行选择）
 /// @param start 起始日期 2020-03-24

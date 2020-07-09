@@ -44,7 +44,7 @@
 //                NSString* deviceId =[[user.devices firstObject] deviceID];
 //                NSString* appId =[[user.devices firstObject] appId] ;
 //                NSLog(@"deviceId:%@,appId:%@",deviceId,appId);
-//                
+//
 //                [STPAccessConfiger setCurrDeviceID:deviceId appId:appId   ];
 //            }
 //        }
@@ -82,7 +82,8 @@
         @"获取点读、跟读、读书详情（按照数量进行选择）",
         @"获取跟读数据 （按照日期进行选择）",
         @"获取跟读数据 （按照数量进行选择）",
-        @"第三方登录"
+        @"第三方登录",
+        @"获取点读、跟读、读书详情（按照时间进行选择）"
     ];
 }
 
@@ -300,17 +301,17 @@
             break;
         case 14:
         {
-            
-            [STPStudyReportApi getStudyAchieveDetailData:@"duration" fromId:0 count:7 block:^(STPStudyAchieveDetail * _Nullable list, NSError * _Nullable error) {
-                NSLog(@"获取点读、跟读、读书详情（按照数量进行选择）:%@",error);
-                
-                if (error) {
-                    message = error.description;
-                } else {
-                    message = [list modelToJSONString];
-                }
-                [self showMessage:message];
+        
+            [STPStudyReportApi getStudyAchieveDetailData:@"duration" fromId:0 count:7 block:^(NSArray<STPStudyAchieveDetail *> * _Nullable list, NSError * _Nullable error) {
+                 NSLog(@"获取点读、跟读、读书详情（按照数量进行选择）:%@",error);
+                     if (error) {
+                         message = error.description;
+                     } else {
+                         message = [list modelToJSONString];
+                     }
+                     [self showMessage:message];
             }];
+        
         }
             break;
         case 15:
@@ -370,6 +371,19 @@
                }];
         }
             break;
+      case 18:
+           {
+               [STPStudyReportApi getStudyAchieveDetailData:@"duration" startDate:@"2020-06-24" endDate:@"2020-07-10" block:^(NSArray<STPStudyAchieveDetail *> * _Nullable list, NSError * _Nullable error) {
+                     NSLog(@"获取点读、跟读、读书详情（按照数量进行选择）:%@",error);
+                     if (error) {
+                             message = error.description;
+                         } else {
+                             message = [list modelToJSONString];
+                         }
+                    [self showMessage:message];
+               }];
+           }
+               break;
         default:
             break;
     }
